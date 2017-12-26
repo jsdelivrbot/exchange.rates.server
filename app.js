@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 //const index = require('routes/index');
 const app = express();
 
-//app.engine('ejs', require('ejs-locals'));
+app.engine('ejs', require('ejs-locals'));
 // view engine setup
 app.set('views', path.join(__dirname, 'templates'));
 app.set('view engine', 'ejs');
