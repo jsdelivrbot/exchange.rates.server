@@ -8,6 +8,10 @@ const http = require('http');
 const config = require('../config');
 const log = require('../libs/log')(module);
 
+// myfin.by request
+//const streamReq = require('./getPage.js');
+//console.log(streamReq + '111111111111');
+
 /**
  * Get port from environment and store in Express.
  */
