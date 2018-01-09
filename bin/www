@@ -81,22 +81,23 @@ function onListening()
 /**
  * Get pages from source urls
  */
-let renderSourcePages = () =>
+/*let renderSourcePages = () =>
 {
 	let page = new Promise(resolve => resolve(require('./getPages.js')))
-		.then(result => console.log(result))
+		.then(result => result)//console.log(result))
 		.catch(reject => log.error("Rejected -> " + reject));
-};
+};*/
 
 /**
  * Cron job
  */
+/*
 let CronJob = require('cron').CronJob;
 new CronJob({
 	//cronTime: "0 5,20,35,50 * * * *", // Every 15 minutes
-	cronTime: "5,20,35,50 * * * * *", // Every 15 sec
-	//cronTime: "5,20,35,50 * * * * 1", // for upload
+	//cronTime: "5,20,35,50 * * * * *", // Every 15 sec
+	cronTime: "30 * * * * *", // for upload
 	onTick: renderSourcePages,
 	start: true,
 	timeZone: "America/Los_Angeles"
-});
+});*/
