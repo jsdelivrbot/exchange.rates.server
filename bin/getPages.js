@@ -282,7 +282,7 @@ let createDepObjects = result =>
 			}()
 		), obj), {});
 		//ratesObj = ratesTmpObj.sell.reduce((obj, arr) => (obj[arr[0]+'-byn'] = arr[1], obj), ratesObj);
-		console.log(ratesObj);
+		//console.log(ratesObj);
 
 		// Add same currency rates
 		ratesObj['byn-byn'] = '1.000';

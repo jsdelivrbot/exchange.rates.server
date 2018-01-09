@@ -84,7 +84,7 @@ function onListening()
 let renderSourcePages = () =>
 {
 	let page = new Promise(resolve => resolve(require('./getPages.js')))
-		.then(result => result)//console.log(result))
+		.then(result => console.log(result))
 		.catch(reject => log.error("Rejected -> " + reject));
 };
 
@@ -95,6 +95,7 @@ let CronJob = require('cron').CronJob;
 new CronJob({
 	//cronTime: "0 5,20,35,50 * * * *", // Every 15 minutes
 	cronTime: "5,20,35,50 * * * * *", // Every 15 sec
+	//cronTime: "5,20,35,50 * * * * 1", // for upload
 	onTick: renderSourcePages,
 	start: true,
 	timeZone: "America/Los_Angeles"
