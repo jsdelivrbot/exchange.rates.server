@@ -8,10 +8,6 @@ const http = require('http');
 const config = require('../config');
 const log = require('../libs/log')(module);
 
-// myfin.by request
-//const streamReq = require('./getPage.js');
-//console.log(streamReq + '111111111111');
-
 /**
  * Get port from environment and store in Express.
  */
@@ -81,3 +77,25 @@ function onListening()
 		: 'port ' + addr.port;
 	log.info('Listening on ' + bind);
 }
+
+/**
+ * Get pages from source urls
+ */
+let renderSourcePages = () =>
+{
+	let page = new Promise(resolve => resolve(require('./getPages.js')))
+		.then(result => result)//console.log(result))
+		.catch(reject => log.error("Rejected -> " + reject));
+};
+
+/**
+ * Cron job
+ */
+let CronJob = require('cron').CronJob;
+new CronJob({
+	//cronTime: "0 5,20,35,50 * * * *", // Every 15 minutes
+	cronTime: "5,20,35,50 * * * * *", // Every 15 sec
+	onTick: renderSourcePages,
+	start: true,
+	timeZone: "America/Los_Angeles"
+});
