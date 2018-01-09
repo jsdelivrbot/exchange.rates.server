@@ -18,10 +18,10 @@ let renderSourcePages = () =>
 let CronJob = require('cron').CronJob;
 new CronJob({
 	//cronTime: "0 5,20,35,50 * * * *", // Every 15 minutes
-	//cronTime: "5,20,35,50 * * * * *", // Every 15 sec
-	cronTime: "30 * * * * *", // for upload
+	cronTime: "5,20,35,50 * * * * *", // Every 15 sec
+	//cronTime: "30 * * * * *", // for upload
 	onTick: renderSourcePages,
-	start: true,
+	start: false,
 	timeZone: "America/Los_Angeles"
 });
 
