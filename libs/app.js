@@ -6,14 +6,15 @@ const bodyParser     = require('body-parser');
 const passport       = require('passport');
 const methodOverride = require('method-override');
 
-const config = require('./config');
-const log    = require('./log')(module);
-const auth   = require(path.join(__dirname, 'auth'));
+const libs   = process.cwd() + '/libs/';
+const config = require(libs + 'config');
+const log    = require(libs + 'log')(module);
+const auth   = require(libs + 'auth');
 
 // Routes
-const api      = require('./routes/api');
-const users    = require('./routes/users');
-const articles = require('./routes/articles');
+const api      = require(libs + 'routes/api');
+const users    = require(libs + 'routes/users');
+const articles = require(libs + 'routes/articles');
 
 const app = express();
 
@@ -32,6 +33,15 @@ app.use('/', api);
 app.use('/api', api);
 app.use('/api/users', users);
 app.use('/api/articles', articles);
+
+new Promise((resolve, reject) =>
+{
+	resolve(require(libs + 'public/js/query'));
+})
+	.then(
+		result => console.log(result),
+		error => log.error(error)
+	);
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) =>

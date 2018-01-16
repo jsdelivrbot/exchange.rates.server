@@ -1,6 +1,7 @@
-const https = require('https');
-const config = require('../config');
-const log = require('../libs/log')(module);
+const https  = require('https');
+const libs   = process.cwd() + '/libs/';
+const config = require(libs + 'config');
+const log    = require(libs + 'log')(module);
 
 let cityLink = '';
 

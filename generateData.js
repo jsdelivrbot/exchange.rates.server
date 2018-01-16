@@ -1,14 +1,9 @@
-const faker        = require('faker');
-
-const libs         = process.cwd() + '/libs/';
-
-const log          = require(libs + 'log')(module);
-const db           = require(libs + 'db/mongoose');
-const config       = require(libs + 'config');
-const User         = require(libs + 'model/user');
-const Client       = require(libs + 'model/client');
-const AccessToken  = require(libs + 'model/accessToken');
-const RefreshToken = require(libs + 'model/refreshToken');
+const libs   = process.cwd() + '/libs/';
+const log    = require(libs + 'log')(module);
+const db     = require(libs + 'db/mongoose');
+const config = require(libs + 'config');
+const User   = require(libs + 'model/user');
+const Client = require(libs + 'model/client');
 
 User.remove({}, function(err)
 {
@@ -37,16 +32,6 @@ Client.remove({}, function(err)
 		if (!err) log.info("New client - %s:%s", client.clientId, client.clientSecret);
 		else return log.error(err);
 	});
-});
-
-AccessToken.remove({}, function(err)
-{
-	if (err) return log.error(err);
-});
-
-RefreshToken.remove({}, function(err)
-{
-	if (err) return log.error(err);
 });
 
 setTimeout(function()
