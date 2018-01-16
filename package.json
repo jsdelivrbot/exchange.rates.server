@@ -1,41 +1,50 @@
 {
-  "name": "exchange-rates",
-  "version": "0.0.2",
-  "description": "Exchange rates application",
+  "name": "ExchangeRatesServer",
+  "version": "1.0.0",
+  "author": "Dmitri Degtev",
+  "description": "Backend part for Exchange Rates application. Build on RESTful API with Node.js and passport",
+  "private": true,
   "engines": {
     "node": "8.9.1"
   },
-  "main": "app.js",
   "scripts": {
-    "start": "node bin/www",
-    "test": "node test.js"
+    "start": "node bin/www"
   },
   "dependencies": {
-    "async": "^2.6.0",
-    "body-parser": "~1.18.2",
+    "body-parser": "^1.18.2",
     "cookie-parser": "~1.4.3",
     "cron": "^1.3.0",
     "debug": "~2.6.9",
-    "ejs": "~2.5.7",
-    "ejs-locals": "^1.0.2",
     "express": "~4.15.5",
-    "morgan": "~1.9.0",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.13.9",
     "nconf": "^0.9.1",
-    "serve-favicon": "~2.4.5",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-oauth2-client-password": "^0.1.2",
+    "serve-favicon": "^2.4.5",
     "winston": "^2.4.0"
   },
-  "devDependencies": {
-    "request": "^2.81.0",
-    "tape": "^4.7.0"
+  "jshintConfig": {
+    "curly": true,
+    "eqeqeq": true,
+    "immed": true,
+    "latedef": false,
+    "newcap": false,
+    "noarg": true,
+    "sub": true,
+    "undef": true,
+    "boss": true,
+    "eqnull": true,
+    "strict": false,
+    "scripturl": true,
+    "evil": true,
+    "globals": {
+      "location": true,
+      "printStackTrace": false
+    },
+    "browser": true,
+    "node": true
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
   "license": "MIT"
 }

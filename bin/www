@@ -1,30 +1,22 @@
 #!/usr/bin/env node
+const debug  = require('debug')('restapi');
 
-/**
- * Module dependencies.
- */
-const app = require('../app.js');
-const http = require('http');
-const config = require('../config');
-const log = require('../libs/log')(module);
+const libs   = process.cwd() + '/libs/';
+
+const config = require(libs + 'config');
+const log    = require(libs + 'log')(module);
+const app    = require(libs + 'app');
 
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.PORT || config.get('port'));
-app.set('port', port);
+app.set('port', normalizePort(process.env.PORT || config.get('port')) || 3000);
 
-/**
- * Create HTTP server.
- */
-const server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+const server = app.listen(app.get('port'), () =>
+{
+	debug('Express server listening on port ' + app.get('port'));
+	log.info('Express server listening on port ' + app.get('port'));
+});
 
 /**
  * Normalize a port into a number, string, or false.
@@ -38,66 +30,3 @@ function normalizePort(val)
 
 	return false;
 }
-
-/**
- * Event listener for HTTP server "error" event.
- */
-function onError(error)
-{
-	if (error.syscall !== 'listen') throw error;
-
-	let bind = typeof port === 'string'
-		? 'Pipe ' + port
-		: 'Port ' + port;
-
-	// handle specific listen errors with friendly messages
-	switch (error.code)
-	{
-		case 'EACCES':
-			console.error(bind + ' requires elevated privileges');
-			process.exit(1);
-			break;
-		case 'EADDRINUSE':
-			console.error(bind + ' is already in use');
-			process.exit(1);
-			break;
-		default:
-			throw error;
-	}
-}
-
-/**
- * Event listener for HTTP server "listening" event.
- */
-function onListening()
-{
-	let addr = server.address();
-	let bind = typeof addr === 'string'
-		? 'pipe ' + addr
-		: 'port ' + addr.port;
-	log.info('Listening on ' + bind);
-}
-
-/**
- * Get pages from source urls
- */
-/*let renderSourcePages = () =>
-{
-	let page = new Promise(resolve => resolve(require('./getPages.js')))
-		.then(result => result)//console.log(result))
-		.catch(reject => log.error("Rejected -> " + reject));
-};*/
-
-/**
- * Cron job
- */
-/*
-let CronJob = require('cron').CronJob;
-new CronJob({
-	//cronTime: "0 5,20,35,50 * * * *", // Every 15 minutes
-	//cronTime: "5,20,35,50 * * * * *", // Every 15 sec
-	cronTime: "30 * * * * *", // for upload
-	onTick: renderSourcePages,
-	start: true,
-	timeZone: "America/Los_Angeles"
-});*/

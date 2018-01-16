@@ -1,5 +1,6 @@
 const winston = require('winston');
-const ENV = process.env.NODE_ENV;
+
+winston.emitErrs = true;
 
 function getLogger(module)
 {
@@ -7,12 +8,24 @@ function getLogger(module)
 
 	return new winston.Logger({
 		transports: [
+			new winston.transports.File({
+				level: 'info',
+				filename: process.cwd() + '/logs/all.log',
+				handleException: true,
+				json: true,
+				maxSize: 5242880, // 5 mb
+				maxFiles: 2,
+				colorize: false
+			}),
 			new winston.transports.Console({
 				colorize: true,
-				level: ENV === 'development' ? 'debug' : 'error',
-				label: path
+				level: 'debug',
+				label: path,
+				handleException: true,
+				json: false
 			})
-		]
+		],
+		exitOnError: false
 	});
 }
 

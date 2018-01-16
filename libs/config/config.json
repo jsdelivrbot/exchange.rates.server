@@ -1,0 +1,17 @@
+{
+  "port": 8001,
+  "default": {
+    "api": {
+      "version": "v1"
+    },
+    "user": {
+      "username": "admin",
+      "password": "qwr23fdfSFhgjh435gfddf95"
+    },
+    "client": {
+      "name": "Exchange Rates API",
+      "clientId": "android",
+      "clientSecret": "qwe12FFGhgfh44SDDfgnmh6Hg54"
+    }
+  }
+}

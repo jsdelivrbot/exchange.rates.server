@@ -1,0 +1,12 @@
+{
+  "mongoose": {
+    "uri": "mongodb://nullso:ds8dGBN35dsfYHfd@ds247027.mlab.com:47027/exchange_db",
+    "options": {
+      "server": {
+        "socketOptions": {
+          "keepAlive": 1
+        }
+      }
+    }
+  }
+}
