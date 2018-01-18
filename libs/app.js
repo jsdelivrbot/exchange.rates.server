@@ -34,12 +34,12 @@ app.use('/api', api);
 app.use('/api/users', users);
 app.use('/api/articles', articles);
 
-new Promise((resolve, reject) =>
+new Promise(resolve =>
 {
-	resolve(require(libs + 'public/js/query'));
+	resolve(require(libs + 'public/js/main')());
 })
 	.then(
-		result => console.log(result),
+		result => log.info(JSON.stringify(result,'',4)),
 		error => log.error(error)
 	);
 

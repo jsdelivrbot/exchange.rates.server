@@ -2,6 +2,9 @@ const winston = require('winston');
 
 winston.emitErrs = true;
 
+/**
+ * Add logger to application
+ */
 function getLogger(module)
 {
 	let path = module.filename.split('\\').slice(-2).join('\\');

@@ -3,7 +3,7 @@ const express  = require('express');
 const router   = express.Router();
 
 const libs = process.cwd() + '/libs/';
-const db   = require(libs + 'db/mongoose');
+//const db   = require(libs + 'db/mongoose');
 
 router.get('/info', passport.authenticate(['basic', 'oauth2-client-password'], { session: false }),
 	function(req, res)
