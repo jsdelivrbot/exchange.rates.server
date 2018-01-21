@@ -6,15 +6,15 @@ const bodyParser     = require('body-parser');
 const passport       = require('passport');
 const methodOverride = require('method-override');
 
-const libs   = process.cwd() + '/libs/';
-const config = require(libs + 'config');
-const log    = require(libs + 'log')(module);
-const auth   = require(libs + 'auth');
+const libs = process.cwd() + '/libs/';
+const log  = require(libs + 'log')(module);
+const auth = require(libs + 'auth');
+const db   = require(libs + 'db/mongoose');
 
 // Routes
 const api      = require(libs + 'routes/api');
 const users    = require(libs + 'routes/users');
-const articles = require(libs + 'routes/articles');
+//const articles = require(libs + 'routes/articles');
 
 const app = express();
 
@@ -32,14 +32,15 @@ app.use(passport.initialize());
 app.use('/', api);
 app.use('/api', api);
 app.use('/api/users', users);
-app.use('/api/articles', articles);
+//app.use('/api/articles', articles);
 
 new Promise(resolve =>
 {
-	resolve(require(libs + 'public/js/main')());
+	resolve(require(libs + 'public/js/main')(db));
 })
 	.then(
-		result => log.info(JSON.stringify(result,'',4)),
+		//result => log.info(JSON.stringify(result,'',4)),
+		result => log.info('OK'),
 		error => log.error(error)
 	);
 

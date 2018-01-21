@@ -1,6 +1,6 @@
-const https  = require('https');
-const libs   = process.cwd() + '/libs/';
-const log    = require(libs + 'log')(module);
+const https = require('https');
+const libs  = process.cwd() + '/libs/';
+const log   = require(libs + 'log')(module);
 
 function getData(options)
 {
@@ -23,7 +23,9 @@ function getData(options)
 			{
 				page = page.match(/\<td\>\s*\<div class="ttl"\>(.|[\r\n])+?\<\/td\>\<\/tr\>/igm) || [];
 				page = require('./createDepObjects')(page, options) || [];
+				console.log('index.js ' + page)
 				page = page.reduce((prevVal, curVal) => (prevVal[curVal.title] = curVal, prevVal), {});
+
 				resolve(page);
 			});
 		});

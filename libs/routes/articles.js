@@ -1,3 +1,4 @@
+/*
 const passport = require('passport');
 const express  = require('express');
 const router   = express.Router();
@@ -152,4 +153,4 @@ router.put('/:id', passport.authenticate(['basic', 'oauth2-client-password'], { 
 	});
 });
 
-module.exports = router;
+module.exports = router;*/

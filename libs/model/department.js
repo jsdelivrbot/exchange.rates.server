@@ -131,9 +131,9 @@ let Department = new Schema({
 	}
 });
 
-/*Department.path('title').validate(function(v)
+Department.path('name').validate(v =>
 {
 	return v.length > 5 && v.length < 70;
-});*/
+});
 
 module.exports = mongoose.model('Department', Department);

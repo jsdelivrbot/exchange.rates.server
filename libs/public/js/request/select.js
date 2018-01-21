@@ -6,7 +6,7 @@ const config = require(libs + 'config');
  * @param type - type of data which we want to handle
  * returns string with associated data
  */
-let select = (str, type) =>
+let select = (str, type, cityLink) =>
 {
 	switch (type)
 	{
@@ -44,30 +44,20 @@ let select = (str, type) =>
 			let cityLinks = config.get('cityLinks') || [];
 			let cityNames = config.get('cityNames') || [];
 
-			let city = 'minsk';
-			/*console.log('City:');
-			 console.log(options.city === '' ? 'minsk': options.city);*/
+			let city = cityLink || 'minsk';
 
 			for (let i = 0; i < cityLinks.length; i++)
 			{
-				if (city.indexOf(cityLinks[i]) >= 0)
-				{
-					return cityNames[i];
-				}
+				if (city.indexOf(cityLinks[i]) >= 0) { return cityNames[i]; }
 			}
 			return city;
 
 		case 'address':
 		case 'additional':
-			// Template for main page
-			/*let address = str.match(/address".+?\<\/div\>/i) && str.match(/address".+?\<\/div\>/i)[0] || str.match(/address"[^w]+?\<\/div\>/i) && str.match(/address"[^w]+?\<\/div\>/i)[0] || '';*/
-
 			// Template for custom page(usd, eur etc.)
 			let address = str.match(/address"\>\<a.+?\>(.+?)\<\/a\>\<\/div\>/i) && str.match(/address"\>\<a.+?\>(.+?)\<\/a\>\<\/div\>/i)[0] || str.match(/address"\>\<a.+?\>([^w]+?)\<\/a\>\<\/div\>/i) && str.match(/address"\>\<a.+?\>([^w]+?)\<\/a\>\<\/div\>/i)[0] || '';
 			address = address.match(/;"\>.+?\<\/a\>/i) && address.match(/;"\>.+?\<\/a\>/i)[0] || '';
 
-			// Template for main page
-			/*if (address && typeof address === 'string') address = address.slice(9, -6).trim();*/
 			if (address && typeof address === 'string') address = address.slice(3, -4).trim();
 
 			let getPos = (symbol, str) =>

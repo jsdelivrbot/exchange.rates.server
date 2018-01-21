@@ -6,14 +6,15 @@ let createDepObjects = (result, options) =>
 {
 	return result.map(str =>
 	{
-		let bankName   = require('./select')(str, 'bankName') || '';       // Bank name
-		let title      = require('./select')(str, 'title') || '';          // Department name
-		let link       = require('./select')(str, 'link') || '';           // Link to bank`s website
-		let phone      = require('./select')(str, 'phone') || '';          // Phone number
-		let city       = require('./select')(str, 'city') || '';           // Address city
-		let address    = require('./select')(str, 'address') || '';        // Address street
-		let additional = require('./select')(str, 'additional') || '';     // Address additional info
-		let date       = require('./select')(str, 'date') || '';           // Last update time
+		//console.log('createDepObjects: ' + options.city);
+		let bankName   = require('./select')(str, 'bankName', options.city) || '';    // Bank name
+		let title      = require('./select')(str, 'title', options.city) || '';       // Department name
+		let link       = require('./select')(str, 'link', options.city) || '';        // Link to bank`s website
+		let phone      = require('./select')(str, 'phone', options.city) || '';       // Phone number
+		let city       = require('./select')(str, 'city', options.city) || '';        // Address city
+		let address    = require('./select')(str, 'address', options.city) || '';     // Address street
+		let additional = require('./select')(str, 'additional', options.city) || '';  // Address additional info
+		let date       = require('./select')(str, 'date', options.city) || '';        // Last update time
 
 		// Get all rates by <td>....</td></tr> template
 		let ratesArr = str.match(/\<td.+?\>\<span.+?\>[^w]+?\<\/td\>\<\/tr\>/g) || [];
