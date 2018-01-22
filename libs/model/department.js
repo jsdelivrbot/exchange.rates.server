@@ -1,8 +1,32 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
+let Department = new Schema({
+	city: {
+		type: String,
+		unique: true,
+		required: true
+	},
+	body: {
+		type: Object,
+		required: true
+	},
+	modified: {
+		type: Date,
+		default: Date.now
+	}
+});
+
+module.exports = mongoose.model('Department', Department);
+
+
+
+
+
+
+
 // Department
-let Rates = new Schema({
+/*let Rates = new Schema({
 	"byn-byn": {
 		type: Number,
 		default: 0,
@@ -83,12 +107,16 @@ let Rates = new Schema({
 		default: 0,
 		required: false
 	}
-});
+});*/
 
-let Department = new Schema({
+/*let Department = new Schema({
 	name: {
 		type: String,
 		unique: true,
+		required: true
+	},
+	cityLink: {
+		type: String,
 		required: true
 	},
 	bankName: {
@@ -134,6 +162,4 @@ let Department = new Schema({
 Department.path('name').validate(v =>
 {
 	return v.length > 5 && v.length < 70;
-});
-
-module.exports = mongoose.model('Department', Department);
+});*/

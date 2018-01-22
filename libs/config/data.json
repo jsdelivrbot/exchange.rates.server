@@ -16,11 +16,11 @@
   ],
 
   "cityNames": [
-    "Березино", "Борисов", "Вилейка", "Воложин", "Дзержинск"
+    "Березино", "Борисов", "Вилейка", "Воложин", "Дзержинск", "Жодино", "Заславль", "Ивенец", "Клецк", "Копыль"
   ],
 
   "cityLinks": [
-    "berezino", "borisov", "vileyka", "volozhin", "dzerzhinsk"
+    "berezino", "borisov", "vileyka", "volozhin", "dzerzhinsk", "zhodino", "zaslavl", "ivenets", "kletsk", "kopyl"
   ],
 
   "cityLinks1": [

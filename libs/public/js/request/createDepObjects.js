@@ -1,20 +1,19 @@
 /**
- *
  * Returns object with objects which contains all departments data
  */
 let createDepObjects = (result, options) =>
 {
+	let cityLink = options.cityLink || '';
 	return result.map(str =>
 	{
-		//console.log('createDepObjects: ' + options.city);
-		let bankName   = require('./select')(str, 'bankName', options.city) || '';    // Bank name
-		let title      = require('./select')(str, 'title', options.city) || '';       // Department name
-		let link       = require('./select')(str, 'link', options.city) || '';        // Link to bank`s website
-		let phone      = require('./select')(str, 'phone', options.city) || '';       // Phone number
-		let city       = require('./select')(str, 'city', options.city) || '';        // Address city
-		let address    = require('./select')(str, 'address', options.city) || '';     // Address street
-		let additional = require('./select')(str, 'additional', options.city) || '';  // Address additional info
-		let date       = require('./select')(str, 'date', options.city) || '';        // Last update time
+		let bankName   = require('./select')(str, 'bankName', cityLink) || '';         // Bank name
+		let title      = require('./select')(str, 'title', cityLink) || '';            // Department name
+		let link       = require('./select')(str, 'link', cityLink) || '';             // Link to bank`s website
+		let phone      = require('./select')(str, 'phone', cityLink) || '';            // Phone number
+		let city       = require('./select')(str, 'city', cityLink) || '';             // Address city
+		let address    = require('./select')(str, 'address', cityLink) || '';          // Address street
+		let additional = require('./select')(str, 'additional', cityLink) || '';       // Address additional info
+		let date       = require('./select')(str, 'date', cityLink) || '';             // Last update time
 
 		// Get all rates by <td>....</td></tr> template
 		let ratesArr = str.match(/\<td.+?\>\<span.+?\>[^w]+?\<\/td\>\<\/tr\>/g) || [];
@@ -100,7 +99,6 @@ let createDepObjects = (result, options) =>
 							break;
 					}
 				}
-				//else console.log(arr[2]);
 			}()
 		), obj), {});
 
@@ -143,7 +141,6 @@ let createDepObjects = (result, options) =>
 							break;
 					}
 				}
-				//else console.log(arr[2]);
 			}()
 		), obj), {});
 
@@ -156,17 +153,48 @@ let createDepObjects = (result, options) =>
 		// Merge rates
 		rates = require('../methods/MergeRecursive')(rates.buy, rates.sell);
 
-		return {
-			bankName,
-			title,
-			link,
-			phone,
-			city,
-			address,
-			additional,
-			date,
-			rates
-		};
+		// Address is required field
+		if (address)
+		{
+			return {
+				bankName,
+				title,
+				link,
+				phone,
+				city,
+				address,
+				additional,
+				date,
+				rates
+			};
+		}
+		else
+		{
+			if (additional && additional.length > 5)
+			{
+				address = additional;
+			}
+			else if (city)
+			{
+				address = city;
+			}
+			else
+			{
+				address = 'Адрес неизвестен';
+			}
+
+			return {
+				bankName,
+				title,
+				link,
+				phone,
+				city,
+				address,
+				additional,
+				date,
+				rates
+			};
+		}
 	});
 };
 

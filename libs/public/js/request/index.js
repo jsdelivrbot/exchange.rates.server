@@ -5,11 +5,11 @@ const log   = require(libs + 'log')(module);
 function getData(options)
 {
 	/**
-	 *
 	 * Get data from host and then reorganize this data to object
 	 */
 	return new Promise(resolve =>
 	{
+		let result = {};
 		let page = '';
 		let req = https.request(options, res =>
 		{
@@ -23,10 +23,14 @@ function getData(options)
 			{
 				page = page.match(/\<td\>\s*\<div class="ttl"\>(.|[\r\n])+?\<\/td\>\<\/tr\>/igm) || [];
 				page = require('./createDepObjects')(page, options) || [];
-				console.log('index.js ' + page)
-				page = page.reduce((prevVal, curVal) => (prevVal[curVal.title] = curVal, prevVal), {});
 
-				resolve(page);
+				// Get current city
+				let city = (page instanceof Array && page[0] && page[0].city) ? page[0].city : null;
+
+				page = page.reduce((prevVal, curVal) => (prevVal[curVal.title] = curVal, prevVal), {});
+				result[city] = page;
+
+				resolve(result);
 			});
 		});
 

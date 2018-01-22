@@ -1,5 +1,4 @@
 /**
- *
  * Recursively merge properties of two objects
  */
 let MergeRecursive = (obj1, obj2) =>

@@ -10,15 +10,16 @@ const libs = process.cwd() + '/libs/';
 const log  = require(libs + 'log')(module);
 const auth = require(libs + 'auth');
 const db   = require(libs + 'db/mongoose');
+require(libs + 'public/js/main')(db);
 
 // Routes
-const api      = require(libs + 'routes/api');
-const users    = require(libs + 'routes/users');
-//const articles = require(libs + 'routes/articles');
+const api         = require(libs + 'routes/api');
+const users       = require(libs + 'routes/users');
+const departments = require(libs + 'routes/departments');
 
 const app = express();
 
-// Middlewares
+// Middleware
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -27,22 +28,11 @@ app.use(methodOverride());
 
 // Passport
 app.use(passport.initialize());
-//app.use(passport.session());
 
 app.use('/', api);
 app.use('/api', api);
 app.use('/api/users', users);
-//app.use('/api/articles', articles);
-
-new Promise(resolve =>
-{
-	resolve(require(libs + 'public/js/main')(db));
-})
-	.then(
-		//result => log.info(JSON.stringify(result,'',4)),
-		result => log.info('OK'),
-		error => log.error(error)
-	);
+app.use('/api/departments', departments);
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) =>

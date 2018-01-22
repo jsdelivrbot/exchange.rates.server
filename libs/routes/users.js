@@ -1,21 +1,19 @@
 const passport = require('passport');
 const express  = require('express');
 const router   = express.Router();
-
-const libs = process.cwd() + '/libs/';
-//const db   = require(libs + 'db/mongoose');
+const libs     = process.cwd() + '/libs/';
 
 router.get('/info', passport.authenticate(['basic', 'oauth2-client-password'], { session: false }),
-	function(req, res)
+	(req, res) =>
 	{
-		// req.authInfo is set using the `info` argument supplied by
-		// `BearerStrategy`.  It is typically used to indicate scope of the token,
-		// and used in access control checks.  For illustrative purposes, this
-		// example simply returns the scope in the response.
 		res.json({
-			user_id: req.user.userId,
-			name: req.user.username,
-			scope: req.authInfo.scope
+			user_id: req.user._id,
+			username: req.user.username,
+			created: req.user.created,
+
+			clientName: req.user.name,
+			clientId: req.user.clientId,
+			__v: req.user.__v
 		});
 	}
 );

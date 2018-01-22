@@ -19,9 +19,10 @@ let getData = (object) =>
 			.then(
 				res =>
 				{
+					i++;
 					if (cityLinks.length > i)
 					{
-						return new Promise(resolve => resolve(recursion(res, i + 1)))
+						return new Promise(resolve => resolve(recursion(res, i)))
 							.then(result => result, error => log.error(error));
 					}
 					else return res;

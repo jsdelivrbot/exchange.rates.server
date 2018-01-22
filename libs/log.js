@@ -1,9 +1,8 @@
 const winston = require('winston');
-
 winston.emitErrs = true;
 
 /**
- * Add logger to application
+ * Add logger to the application
  */
 function getLogger(module)
 {
@@ -12,8 +11,8 @@ function getLogger(module)
 	return new winston.Logger({
 		transports: [
 			new winston.transports.File({
-				level: 'info',
-				filename: process.cwd() + '/logs/all.log',
+				level: 'error',
+				filename: process.cwd() + '/logs/error.log',
 				handleException: true,
 				json: true,
 				maxSize: 5242880, // 5 mb

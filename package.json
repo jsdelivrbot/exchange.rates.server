@@ -20,6 +20,7 @@
     "express": "~4.15.5",
     "method-override": "^2.3.10",
     "mongoose": "^5.0.1",
+    "multi-geocoder": "^0.1.6",
     "nconf": "^0.9.1",
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",
@@ -48,5 +49,5 @@
     "browser": true,
     "node": true
   },
-  "license": "MIT"
+  "license": "ISC"
 }

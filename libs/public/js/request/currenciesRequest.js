@@ -16,7 +16,7 @@ let result = (link, obj) =>
 			new Promise(resolve =>
 			{
 				let options = {
-					city: link,
+					cityLink: link,
 					currencyType: type,
 					host: 'myfin.by',
 					path: '/currency/' + type + '/' + link,
