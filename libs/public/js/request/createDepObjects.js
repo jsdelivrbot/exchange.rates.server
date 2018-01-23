@@ -170,11 +170,7 @@ let createDepObjects = (result, options) =>
 		}
 		else
 		{
-			if (additional && additional.length > 5)
-			{
-				address = additional;
-			}
-			else if (city)
+			if (city)
 			{
 				address = city;
 			}
