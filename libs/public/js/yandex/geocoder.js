@@ -30,6 +30,7 @@ let getLatLng = (data) =>
 				        	if (res.result.features[i] && res.result.features[i].geometry && res.result.features[i].geometry.coordinates)
 					        {
 						        data[city][department].coordinates = res.result.features[i].geometry.coordinates;
+						        data[city][department].properties = res.result.features[i].properties;
 						        i++;
 					        }
 				        }
