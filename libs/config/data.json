@@ -11,19 +11,19 @@
     "абсолют", "альфа", "белвэб", "втб", "москва-минск", "решение", "белагропром", "беларусбанк", "белгазпром", "белинвест", "бнб", "бпс", "бсб", "бта", "идея", "мтб", "паритет", "приор", "статус", "техно", "тк банк", "франса", "цептер"
   ],
 
-  "cityNames": [
+  "cityNames1": [
     "Минск", "Березино", "Борисов", "Вилейка", "Воложин", "Дзержинск", "Жодино", "Заславль", "Ивенец", "Клецк", "Копыль", "Крупки", "Логойск", "Любань", "Марьина Горка", "Мачулищи", "Молодечно", "Мядель", "Нарочь", "Несвиж", "Плещеницы", "Радошковичи", "Слуцк", "Смиловичи", "Смолевичи", "Солигорск", "Старобин", "Старые Дороги", "Столбцы", "Узда", "Фаниполь", "Червень", "Брест", "Барановичи", "Белоозёрск", "Береза", "Высокое", "Ганцевичи", "Давид-Городок", "Дрогичин", "Жабинка", "Иваново", "Ивацевичи", "Каменец", "Кобрин", "Лунинец", "Ляховичи", "Малорита", "Микашевичи", "Пинск", "Пружаны", "Столин", "Витебск", "Барань", "Бешенковичи", "Боровуха", "Браслав", "Верхнедвинск", "Глубокое", "Городок", "Докшицы", "Дубровно", "Лепель", "Лиозно", "Миоры", "Новолукомль", "Новополоцк", "Орша", "Полоцк", "Поставы", "Россоны", "Руба", "Сенно", "Толочин", "Ушачи", "Чашники", "Шарковщина", "Шумилино", "Гомель", "Брагин", "Буда-Кошелёво", "Ветка", "Добруш", "Ельск", "Житковичи", "Жлобин", "Калинковичи", "Корма", "Костюковка", "Лельчицы", "Лоев", "Лясковичи", "Мозырь", "Наровля", "Октябрьский", "Петриков", "Речица", "Рогачев", "Светлогорск", "Туров", "Хойники", "Чечерск", "Гродно", "Берёзовка", "Большая Берестовица", "Боровики", "Волковыск", "Вороново", "Дятлово", "Зельва", "Ивье", "Кореличи", "Красносельский", "Лида", "Минчики", "Мир", "Мосты", "Новогрудок", "Островец", "Ошмяны", "Россь", "Свислочь", "Скидель", "Слоним", "Сморгонь", "Щучин", "Могилев", "Белыничи", "Бобруйск", "Быхов", "Глуск", "Горки", "Кировск", "Климовичи", "Кличев", "Костюковичи", "Краснополье", "Кричев", "Круглое", "Мстиславль", "Осиповичи", "Славгород", "Хотимск", "Чаусы", "Чериков", "Шклов"
   ],
 
-  "cityNames1": [
-    "Березино", "Борисов", "Вилейка", "Воложин", "Дзержинск", "Жодино", "Заславль", "Ивенец", "Клецк", "Копыль"
-  ],
-
-  "cityLinks1": [
-    "berezino", "borisov", "vileyka", "volozhin", "dzerzhinsk", "zhodino", "zaslavl", "ivenets", "kletsk", "kopyl"
+  "cityNames": [
+    "Минск", "Березино", "Борисов", "Вилейка", "Воложин", "Дзержинск", "Жодино", "Заславль", "Ивенец", "Клецк", "Копыль", "Крупки"
   ],
 
   "cityLinks": [
+    "minsk", "berezino", "borisov", "vileyka", "volozhin", "dzerzhinsk", "zhodino", "zaslavl", "ivenets", "kletsk", "kopyl", "krupki"
+  ],
+
+  "cityLinks1": [
     "minsk", "berezino", "borisov", "vileyka", "volozhin", "dzerzhinsk", "zhodino", "zaslavl", "ivenets", "kletsk", "kopyl", "krupki", "logoysk", "lyuban", "marina_gorka", "machulishchi", "molodechno", "myadel", "naroch", "nesvizh", "pleschenicy", "radoshkovichi", "slutsk", "smilovichi", "smolevichi", "soligorsk", "starobin", "staryye_dorogi", "stolbcy", "uzda", "fanipol", "cherven", "brest", "baranovichi", "beloozyorsk", "bereza", "vysokoye", "gancevichi", "david-gorodok", "drogichin", "zhabinka", "ivanovo", "ivacevichi", "kamenets", "kobrin", "luninec", "lyakhovichi", "malorita", "mikashevichi", "pinsk", "pruzhany", "stolin", "vitebsk", "baran", "beshenkovichi", "borovukha", "braslav", "verhnedvinsk", "glubokoe", "gorodok", "dokshitsy", "dubrovno", "lepel", "liozno", "miory", "novolukoml", "novopolotsk", "orsha", "polotsk", "postavy", "rossony", "ruba", "senno", "tolochin", "ushachi", "chashniki", "sharkovshchina", "shumilino", "gomel", "bragin", "buda-koshelyovo", "vetka", "dobrush", "yelsk", "zhitkovichi", "zhlobin", "kalinkovichi", "korma", "kostyukovka", "lelchitsy", "loew", "ljaskovichi", "mozyr", "narovla", "oktyabrskii", "petrikov", "rechitsa", "rogachev", "svetlogorsk", "turov", "hojniki", "chechersk", "grodno", "beryozovka", "bolshaya-berestovica", "boroviki", "volkovisk", "voronovo", "dyatlovo", "zelva", "ivye", "korelichi", "krasnoselskiy", "lida", "minchiki", "mir", "mosty", "novogrudok", "ostrovec", "oshmiany", "ross", "svisloch", "skidel", "slonim", "smorgon", "shchuchin", "mogilev", "belynichi", "bobrujsk", "byhov", "glusk", "gorki", "kirovsk", "klimovichi", "klichev", "kostyukovichi", "krasnopolye", "krichev", "krugloye", "mstislavl", "osipovichi", "slavgorod", "hotimsk", "chausy", "cherikov", "shklov"
   ],
 

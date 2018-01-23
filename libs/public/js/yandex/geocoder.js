@@ -21,16 +21,24 @@ let getLatLng = (data) =>
 	        {
 	        	if (res && res.result && res.result.features)
 		        {
+		        	let response = res.result.features;
 			        let i = 0;
 
 			        for (let city in data)
 			        {
 				        for (let department in data[city])
 				        {
-				        	if (res.result.features[i] && res.result.features[i].geometry && res.result.features[i].geometry.coordinates)
+				        	if (response[i])
 					        {
-						        data[city][department].coordinates = res.result.features[i].geometry.coordinates;
-						        data[city][department].properties = res.result.features[i].properties;
+					        	if (response[i].geometry && response[i].geometry.coordinates)
+						        {
+							        data[city][department].coordinates = response[i].geometry.coordinates;
+						        }
+
+						        if (response[i].properties && response[i].properties.metaDataProperty && response[i].properties.metaDataProperty.GeocoderMetaData && response[i].properties.metaDataProperty.GeocoderMetaData.text)
+						        {
+							        data[city][department].fullAddress = response[i].properties.metaDataProperty.GeocoderMetaData.text;
+						        }
 						        i++;
 					        }
 				        }
