@@ -2,7 +2,7 @@
   "name": "ExchangeRatesServer",
   "version": "1.0.0",
   "author": "Dmitri Degtev",
-  "description": "Backend part for Exchange Rates application. Build on RESTful API with Node.js and passport",
+  "description": "Back-end part for Exchange Rates application. Build on RESTful API with Node.js and passport",
   "private": true,
   "engines": {
     "node": "8.9.1"

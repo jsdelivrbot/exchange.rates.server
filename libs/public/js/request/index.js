@@ -2,7 +2,7 @@ const https = require('https');
 const libs  = process.cwd() + '/libs/';
 const log   = require(libs + 'log')(module);
 
-function getData(options)
+let getData = (options, id) =>
 {
 	/**
 	 * Get data from host and then reorganize this data to object
@@ -13,7 +13,7 @@ function getData(options)
 		let page = '';
 		let req = https.request(options, res =>
 		{
-			res.on('readable', function()
+			res.on('readable', () =>
 			{
 				let data = res.read();
 				if (data) page += data;
@@ -27,7 +27,7 @@ function getData(options)
 				// Get current city
 				let city = (page instanceof Array && page[0] && page[0].city) ? page[0].city : null;
 
-				page = page.reduce((prevVal, curVal) => (prevVal[curVal.title] = curVal, prevVal), {});
+				page = page.reduce((prevVal, curVal) => (prevVal[curVal.id] = curVal, prevVal), {});
 				result[city] = page;
 
 				resolve(result);
@@ -42,6 +42,6 @@ function getData(options)
 
 		req.end();
 	});
-}
+};
 
 module.exports = getData;

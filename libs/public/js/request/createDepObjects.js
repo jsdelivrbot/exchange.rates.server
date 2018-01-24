@@ -4,8 +4,12 @@
 let createDepObjects = (result, options) =>
 {
 	let cityLink = options.cityLink || '';
+	let count = 0;
 	return result.map(str =>
 	{
+		count++;
+		//Math.floor(Math.random() * 1e8)
+		let id         = cityLink + count;
 		let bankName   = require('./select')(str, 'bankName', cityLink) || '';         // Bank name
 		let title      = require('./select')(str, 'title', cityLink) || '';            // Department name
 		let link       = require('./select')(str, 'link', cityLink) || '';             // Link to bank`s website
@@ -157,6 +161,7 @@ let createDepObjects = (result, options) =>
 		if (address)
 		{
 			return {
+				id,
 				bankName,
 				title,
 				link,
@@ -180,6 +185,7 @@ let createDepObjects = (result, options) =>
 			}
 
 			return {
+				id,
 				bankName,
 				title,
 				link,

@@ -18,11 +18,13 @@ let result = () =>
 	})
 		.then(result => new Promise(resolve =>
 		{
+			log.warn('Departments gathering is done by collector.js!');
 			// Get coordinates by address
 			resolve(require('./yandex/geocoder')(result));
 		}, error => log.error(error))
 			.then(data => new Promise(resolve =>
 			{
+				log.warn('Geocoder received all coordinates!');
 				// Save to db
 				resolve(require('./db/saveCollection')(data, 'department'))
 			}, error => log.error(error)))
