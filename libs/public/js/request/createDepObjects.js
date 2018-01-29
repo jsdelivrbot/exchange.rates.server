@@ -4,12 +4,9 @@
 let createDepObjects = (result, options) =>
 {
 	let cityLink = options.cityLink || '';
-	let count = 0;
+
 	return result.map(str =>
 	{
-		count++;
-		//Math.floor(Math.random() * 1e8)
-		let id         = cityLink + count;
 		let bankName   = require('./select')(str, 'bankName', cityLink) || '';         // Bank name
 		let title      = require('./select')(str, 'title', cityLink) || '';            // Department name
 		let link       = require('./select')(str, 'link', cityLink) || '';             // Link to bank`s website
@@ -17,7 +14,11 @@ let createDepObjects = (result, options) =>
 		let city       = require('./select')(str, 'city', cityLink) || '';             // Address city
 		let address    = require('./select')(str, 'address', cityLink) || '';          // Address street
 		let additional = require('./select')(str, 'additional', cityLink) || '';       // Address additional info
-		let date       = require('./select')(str, 'date', cityLink) || '';             // Last update time
+		let dateNow = new Date();                                                      // Current GMT date
+		// Current local date
+		let localDate = dateNow.getDate() + '.' + (dateNow.getMonth() + 1) + '.' + dateNow.getFullYear();
+		let date      = require('./select')(str, 'date', cityLink) || localDate;       // Last update time
+		date          = localDate + ' ' + date;                                        // Last update date
 
 		// Get all rates by <td>....</td></tr> template
 		let ratesArr = str.match(/\<td.+?\>\<span.+?\>[^w]+?\<\/td\>\<\/tr\>/g) || [];
@@ -155,13 +156,12 @@ let createDepObjects = (result, options) =>
 		rates.buy['rub-rub'] = 1;
 
 		// Merge rates
-		rates = require('../methods/MergeRecursive')(rates.buy, rates.sell);
+		rates = require('../methods/mergeRecursive')(rates.buy, rates.sell);
 
 		// Address is required field
 		if (address)
 		{
 			return {
-				id,
 				bankName,
 				title,
 				link,
@@ -185,7 +185,6 @@ let createDepObjects = (result, options) =>
 			}
 
 			return {
-				id,
 				bankName,
 				title,
 				link,

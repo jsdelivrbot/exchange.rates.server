@@ -1,7 +1,7 @@
 /**
  * Recursively merge properties of two objects
  */
-let MergeRecursive = (obj1, obj2) =>
+let mergeRecursive = (obj1, obj2) =>
 {
 	for (let prop in obj2)
 	{
@@ -12,7 +12,7 @@ let MergeRecursive = (obj1, obj2) =>
 				// Property in destination object set; update its value.
 				if (obj2[prop].constructor === Object)
 				{
-					obj1[prop] = MergeRecursive(obj1[prop], obj2[prop]);
+					obj1[prop] = mergeRecursive(obj1[prop], obj2[prop]);
 				}
 				else
 				{
@@ -29,4 +29,4 @@ let MergeRecursive = (obj1, obj2) =>
 	return obj1;
 };
 
-module.exports = MergeRecursive;
+module.exports = mergeRecursive;

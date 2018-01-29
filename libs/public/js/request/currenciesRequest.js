@@ -30,7 +30,7 @@ let result = (link, obj) =>
 			})
 				.then(res =>
 				{
-					require('../methods/MergeRecursive')(obj, res);
+					require('../methods/mergeRecursive')(obj, res);
 					resolve(obj);
 					next();
 					return obj;

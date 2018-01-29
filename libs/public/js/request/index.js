@@ -27,7 +27,7 @@ let getData = (options, id) =>
 				// Get current city
 				let city = (page instanceof Array && page[0] && page[0].city) ? page[0].city : null;
 
-				page = page.reduce((prevVal, curVal) => (prevVal[curVal.id] = curVal, prevVal), {});
+				page = page.reduce((prevVal, curVal) => (prevVal[curVal.link.slice(6)] = curVal, prevVal), {});
 				result[city] = page;
 
 				resolve(result);

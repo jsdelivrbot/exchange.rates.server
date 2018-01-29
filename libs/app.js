@@ -9,8 +9,16 @@ const methodOverride = require('method-override');
 const libs = process.cwd() + '/libs/';
 const log  = require(libs + 'log')(module);
 const auth = require(libs + 'auth');
-const db   = require(libs + 'db/mongoose');
-require(libs + 'public/js/main')(db);
+const db   = new Promise(resolve =>
+{
+	resolve(require(libs + 'db/mongoose')())
+})
+	.then(mongoose =>
+	{
+		// Get data with departments
+		require(libs + 'public/js/main')();
+		return mongoose;
+	});
 
 // Routes
 const api         = require(libs + 'routes/api');

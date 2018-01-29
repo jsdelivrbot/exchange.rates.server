@@ -25,7 +25,8 @@ let getLatLng = (data) =>
 			address = 'Беларусь, ' + city + ', ' + address;
 		}
 		testCount++;
-		log.warn('test ' + testCount + '/' + count);
+		//log.warn('Number of requests ' + testCount + '/' + count);
+
 		return geocoder.geocode([address])
 		               .then(res =>
 		               {
