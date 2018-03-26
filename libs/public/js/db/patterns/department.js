@@ -3,12 +3,11 @@
  * @i - current iteration part of source obj (see ../saveCollection.js)
  * This pattern helps to save target data to the db
  */
-let departmentPattern = (obj, i) =>
-{
+let departmentPattern = (obj, i) => {
 	return {
 		city: i,
-		body: obj[i]
-	}
+		body: obj[ i ]
+	};
 };
 
 module.exports = departmentPattern;

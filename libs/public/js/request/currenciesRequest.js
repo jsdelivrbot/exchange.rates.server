@@ -1,20 +1,16 @@
 const assert = require('assert');
-const async  = require('async');
-const libs   = process.cwd() + '/libs/';
-const log    = require(libs + 'log')(module);
+const async = require('async');
+const libs = process.cwd() + '/libs/';
+const log = require(libs + 'log')(module);
 const config = require(libs + 'config');
 
 let currencyTypes = config.get('currencyTypes');
 
-let result = (link, obj) =>
-{
-	return new Promise(resolve =>
-	{
+let result = (link, obj) => {
+	return new Promise(resolve => {
 		// Make request for each currency and then merge objects with data for different currencies
-		async.each(currencyTypes, (type, next) =>
-		{
-			new Promise(resolve =>
-			{
+		async.each(currencyTypes, (type, next) => {
+			new Promise(resolve => {
 				let options = {
 					cityLink: link,
 					currencyType: type,
@@ -24,12 +20,13 @@ let result = (link, obj) =>
 				};
 
 				// For Minsk there is no link
-				if (link === 'minsk') options.path = '/currency/' + type;
+				if (link === 'minsk') {
+					options.path = '/currency/' + type;
+				}
 
 				resolve(require('../request')(options));
 			})
-				.then(res =>
-				{
+				.then(res => {
 					require('../methods/mergeRecursive')(obj, res);
 					resolve(obj);
 					next();

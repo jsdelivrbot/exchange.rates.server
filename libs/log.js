@@ -4,8 +4,7 @@ winston.emitErrs = true;
 /**
  * Add logger to the application
  */
-function getLogger(module)
-{
+function getLogger(module) {
 	let path = module.filename.split('\\').slice(-2).join('\\');
 
 	return new winston.Logger({

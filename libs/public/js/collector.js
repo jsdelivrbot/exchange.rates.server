@@ -1,6 +1,6 @@
 const assert = require('assert');
-const libs   = process.cwd() + '/libs/';
-const log    = require(libs + 'log')(module);
+const libs = process.cwd() + '/libs/';
+const log = require(libs + 'log')(module);
 const config = require(libs + 'config');
 
 let cityLinks = config.get('cityLinks');
@@ -9,33 +9,28 @@ let cityNames = config.get('cityNames');
 /**
  * Gather all departments data from all BLR cities
  */
-let getData = (object) =>
-{
+let getData = (object) => {
 	/**
 	 * Merge objects with data for different cities
 	 */
-	let recursion = (object, i) =>
-	{
-		log.warn(cityNames[i] + ' city in progress...' + (cityLinks.length - i) + ' cities left');
-		return new Promise(resolve => resolve(require('./request/currenciesRequest')(cityLinks[i], object)))
+	let recursion = (object, i) => {
+		log.warn(cityNames[ i ] + ' city in progress...' + (cityLinks.length - i) + ' cities left');
+		return new Promise(resolve => resolve(require('./request/currenciesRequest')(cityLinks[ i ], object)))
 			.then(
-				res =>
-				{
+				res => {
 					i++;
-					if (cityLinks.length > i)
-					{
+					if (cityLinks.length > i) {
 						return new Promise(resolve => resolve(recursion(res, i)))
-							.then(result =>
-							{
-								return result
+							.then(result => {
+								return result;
 							}, error => log.error(error));
+					} else {
+						return res;
 					}
-					else return res;
 				},
 				error => log.error(error))
-			.then(res =>
-			{
-				log.info(cityNames[i-1] + ' city is done!');
+			.then(res => {
+				log.info(cityNames[ i - 1 ] + ' city is done!');
 				return res;
 			});
 	};

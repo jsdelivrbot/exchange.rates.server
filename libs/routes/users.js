@@ -1,11 +1,10 @@
 const passport = require('passport');
-const express  = require('express');
-const router   = express.Router();
-const libs     = process.cwd() + '/libs/';
+const express = require('express');
+const router = express.Router();
+const libs = process.cwd() + '/libs/';
 
-router.get('/info', passport.authenticate(['basic', 'oauth2-client-password'], { session: false }),
-	(req, res) =>
-	{
+router.get('/info', passport.authenticate([ 'basic', 'oauth2-client-password' ], { session: false }),
+	(req, res) => {
 		res.json({
 			user_id: req.user._id,
 			username: req.user.username,

@@ -1,36 +1,33 @@
-const express        = require('express');
-const path           = require('path');
-const favicon        = require('serve-favicon');
-const cookieParser   = require('cookie-parser');
-const bodyParser     = require('body-parser');
-const passport       = require('passport');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const passport = require('passport');
 const methodOverride = require('method-override');
-
 const libs = process.cwd() + '/libs/';
-const log  = require(libs + 'log')(module);
+const log = require(libs + 'log')(module);
 const auth = require(libs + 'auth');
-const db   = new Promise(resolve =>
-{
-	resolve(require(libs + 'db/mongoose')())
+
+const db = new Promise(resolve => {
+	resolve(require(libs + 'db/mongoose')());
 })
-	.then(mongoose =>
-	{
+	.then(mongoose => {
 		// Get data with departments
 		require(libs + 'public/js/main')();
 		return mongoose;
 	});
 
 // Routes
-const api         = require(libs + 'routes/api');
-const users       = require(libs + 'routes/users');
+const api = require(libs + 'routes/api');
+const users = require(libs + 'routes/users');
 const departments = require(libs + 'routes/departments');
-
 const app = express();
 
 // Middleware
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(methodOverride());
 
@@ -43,8 +40,7 @@ app.use('/api/users', users);
 app.use('/api/departments', departments);
 
 // Catch 404 and forward to error handler
-app.use((req, res, next) =>
-{
+app.use((req, res, next) => {
 	res.status(404);
 	log.debug('%s %d %s', req.method, res.statusCode, req.url);
 	res.json({
@@ -53,8 +49,7 @@ app.use((req, res, next) =>
 });
 
 // Error handlers
-app.use((err, req, res, next) =>
-{
+app.use((err, req, res, next) => {
 	res.status(err.status || 500);
 	log.error('%s %d %s', req.method, res.statusCode, err.message);
 	res.json({

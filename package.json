@@ -1,8 +1,8 @@
 {
   "name": "ExchangeRatesServer",
   "version": "1.0.0",
-  "author": "Dmitri Degtev",
-  "description": "Back-end part for Exchange Rates application. Build on RESTful API with Node.js and passport",
+  "author": "nullso",
+  "description": "Server part of Exchange Rates application",
   "private": true,
   "engines": {
     "node": "8.9.1"
@@ -49,5 +49,5 @@
     "browser": true,
     "node": true
   },
-  "license": "ISC"
+  "license": "MIT"
 }

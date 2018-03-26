@@ -1,32 +1,24 @@
 #!/usr/bin/env node
-const debug  = require('debug')('restapi');
-
-const libs   = process.cwd() + '/libs/';
-
+const debug = require('debug')('restapi');
+const libs = process.cwd() + '/libs/';
 const config = require(libs + 'config');
-const log    = require(libs + 'log')(module);
-const app    = require(libs + 'app');
+const log = require(libs + 'log')(module);
+const app = require(libs + 'app');
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+let normalizePort = val => {
+	let port = parseInt(val, 10);
+	return isNaN(port) ? val : port >= 0 ? port : false;
+};
 
 /**
  * Get port from environment and store in Express.
  */
 app.set('port', normalizePort(process.env.PORT || config.get('port')) || 3000);
 
-const server = app.listen(app.get('port'), () =>
-{
-	debug('Express server listening on port ' + app.get('port'));
-	log.info('Express server listening on port ' + app.get('port'));
+const server = app.listen(app.get('port'), () => {
+	debug('Server listening on port ' + app.get('port'));
+	log.info('Server listening on port ' + app.get('port'));
 });
-
-/**
- * Normalize a port into a number, string, or false.
- */
-function normalizePort(val)
-{
-	let port = parseInt(val, 10);
-
-	if (isNaN(port)) return val;
-	if (port >= 0) return port;
-
-	return false;
-}
